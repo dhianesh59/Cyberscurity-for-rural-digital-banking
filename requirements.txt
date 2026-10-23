@@ -1,5 +1,4 @@
 Flask>=3.0,<4.0
-gunicorn
 Flask
 Flask-Login
 Flask-WTF
@@ -9,3 +8,4 @@ qrcode
 pandas
 numpy
 gunicorn
+
