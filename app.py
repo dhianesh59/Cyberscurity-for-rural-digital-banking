@@ -953,28 +953,3 @@ def logout():
 if __name__ == "__main__":
     create_database()
     app.run(debug=True)
-
-from datetime import timedelta
-from flask import Flask, session, redirect, url_for
-
-app = Flask(__name__)
-
-app.secret_key = "change-this-to-a-secure-secret-key"
-
-# 2 minutes session timeout
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=2)
-app.config["SESSION_REFRESH_EACH_REQUEST"] = True
-
-@app.before_request
-def check_session_timeout():
-    if session.get("logged_in"):
-        session.permanent = True
-
-@app.route("/login")
-def login():
-    return "Login page"
-
-@app.route("/logout")
-def logout():
-    session.clear()
-    return redirect(url_for("login"))
